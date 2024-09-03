@@ -1,25 +1,27 @@
 package Modular;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.Landing;
 
 
 public class Task2Test {
     WebDriver driver;
+    Landing landing;
     @Test
     public void logoIsDisplayed(){
-        WebElement logo = driver.findElement(By.xpath("(//a/img[@alt])[1]"));
-        logo.isDisplayed();
+        landing = new Landing(driver);
+        landing.isLogoDisplayed();
+
     }
     @BeforeTest
     public void beforeTest(){
         driver = new ChromeDriver();
-        driver.navigate().to("https://duckduckgo.com");
+        landing = new Landing(driver);
+        landing.navigate();
     }
 
     @AfterTest
