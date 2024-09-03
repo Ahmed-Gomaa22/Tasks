@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+import pages.Landing;
 
 public class Task1 {
     /*
@@ -15,10 +16,12 @@ public class Task1 {
     Close Google Chrome
     * */
     WebDriver driver;
+    Landing landing;
     @BeforeTest
     public void beforeTest(){
         driver = new ChromeDriver();
-        driver.navigate().to("https://duckduckgo.com");
+        landing = new Landing(driver);
+        landing.navigate();
     }
     @AfterTest
     public void afterTest(){
@@ -26,8 +29,7 @@ public class Task1 {
     }
     @Test
     public void pageTitleAssertion(){
-       var title = driver.getTitle();
-        Assert.assertEquals(title, "DuckDuckGo — Privacy, simplified.");
+        Assert.assertEquals(landing.getTitle(), "DuckDuckGo — Privacy, simplified.");
 
     }
 }
