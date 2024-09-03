@@ -29,7 +29,8 @@ public class Task1 {
     }
     @Test
     public void pageTitleAssertion(){
-        Assert.assertEquals(landing.getTitle(), "DuckDuckGo — Privacy, simplified.");
+        var expectedTitle = landing.getTitle();
+        Assert.assertEquals(expectedTitle, "DuckDuckGo — Privacy, simplified.");
 
     }
 }
