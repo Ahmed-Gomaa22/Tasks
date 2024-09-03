@@ -1,12 +1,14 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class Landing {
     WebDriver driver;
     String title;
+    By searchInput = By.name("q");
     public Landing(WebDriver driver) {
         this.driver = driver;
     }
@@ -21,4 +23,8 @@ public class Landing {
     public void isLogoDisplayed(){
         WebElement logo = driver.findElement(By.xpath("(//a/img[@alt])[1]"));
         logo.isDisplayed();
-    }}
+    }
+    public void search(String query) {
+        driver.findElement(searchInput).sendKeys(query, Keys.ENTER);
+    }
+}

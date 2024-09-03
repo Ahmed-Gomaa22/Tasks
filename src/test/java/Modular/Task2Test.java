@@ -10,18 +10,18 @@ import pages.Landing;
 
 public class Task2Test {
     WebDriver driver;
-    Landing landing;
+    Landing landingPage;
     @Test
     public void logoIsDisplayed(){
-        landing = new Landing(driver);
-        landing.isLogoDisplayed();
+        landingPage = new Landing(driver);
+        landingPage.isLogoDisplayed();
 
     }
     @BeforeTest
     public void beforeTest(){
         driver = new ChromeDriver();
-        landing = new Landing(driver);
-        landing.navigate();
+        landingPage = new Landing(driver);
+        landingPage.navigate();
     }
 
     @AfterTest
