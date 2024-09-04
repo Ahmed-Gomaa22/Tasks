@@ -20,9 +20,9 @@ public class Landing {
         title = driver.getTitle();
         return title;
     }
-    public void isLogoDisplayed(){
-        WebElement logo = driver.findElement(By.xpath("(//a/img[@alt])[1]"));
-        logo.isDisplayed();
+    public boolean isLogoDisplayed(){
+
+        return driver.findElement(By.xpath("(//a/img[@alt])[1]")).isDisplayed();
     }
     public void search(String query) {
         driver.findElement(searchInput).sendKeys(query, Keys.ENTER);
