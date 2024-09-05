@@ -21,8 +21,8 @@ public class Landing {
         return title;
     }
     public boolean isLogoDisplayed(){
-
-        return driver.findElement(By.xpath("(//a/img[@alt])[1]")).isDisplayed();
+       WebElement logo = driver.findElement(By.xpath("(//a/img)[2]"));
+        return logo.isDisplayed();
     }
     public void search(String query) {
         driver.findElement(searchInput).sendKeys(query, Keys.ENTER);
