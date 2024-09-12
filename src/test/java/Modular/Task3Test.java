@@ -53,7 +53,7 @@ public class Task3Test {
         home.search(searchQuery);
         wait.until(
                 d -> {
-                    var firstLink = results.getFirstResultLink();
+                    var firstLink = results.getFirstResultLink(1);
                     Assert.assertEquals(firstLink, "https://www.selenium.dev/documentation/webdriver/");
                     return true;
                 });
