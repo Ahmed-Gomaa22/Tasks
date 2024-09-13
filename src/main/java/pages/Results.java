@@ -7,17 +7,22 @@ public class Results {
     WebDriver driver;
     By anyResultLink;
     By anyResultText;
+    By secondPage;
 
     public Results(WebDriver driver) {
         this.driver = driver;
     }
-    public String getFirstResultLink(int i){
+    public String getAnyResultLink(int i){
         anyResultLink = By.xpath("(//article)["+i+"]//a[@data-testid= 'result-extras-url-link']");
         return driver.findElement(anyResultLink).getAttribute("href");
     }
     public String getResultsText(int i){
         anyResultText = By.xpath("(//article)["+i+"]//h2");
         return driver.findElement(anyResultText).getText();
+    }
+    public void navigateToSecondPage(){
+        secondPage = By.id("more-results");
+        driver.findElement(secondPage).click();
     }
 }
 

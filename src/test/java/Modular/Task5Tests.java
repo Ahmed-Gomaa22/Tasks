@@ -4,7 +4,7 @@ import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
@@ -16,49 +16,51 @@ import pages.Results;
 
 import java.time.Duration;
 
-public class Task4Tests {
+
+public class Task5Tests {
     /*
-    * Open Mozilla Firefox
+    * ________________ Moderate* ________________
+    Open Google Chrome
     Navigate to [https://duckduckgo.com/]
-    Search for [TestNG]
-    Assert that the text of the fourth result is [TestNG Tutorial]
-    Close Mozilla Firefox
-    * */
+    Search for [Cucumber IO]
+    Navigate to the second results page
+    Assert that the link of the second result contains [https://www.linkedin.com]
+    Close Google Chrome
+*/
     WebDriver driver;
     Landing landing;
     Results results;
     Wait<WebDriver> wait;
     @Test
-    public void assertFourthResult(){
-        String query = "TestNG";
+    public void verifySecondResultOfSecondPageContainsLinkedin(){
+        String query = "Cucumber IO";
         landing.search(query);
+        results.navigateToSecondPage();
         wait.until(
                 d -> {
-                    var actual = results.getResultsText(4);
-                    Assert.assertEquals(actual, "TestNG Tutorial");
+                    var actualLink = results.getAnyResultLink(11);
+                    Assert.assertTrue(actualLink.contains("https://www.linkedin.com"));
                     return true;
-                });
-
+                }
+        );
     }
+
     @BeforeTest
     public void beforeTest(){
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         landing = new Landing(driver);
         results = new Results(driver);
         landing.navigate();
-
         wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(4))
                 .pollingEvery(Duration.ofMillis(200))
                 .ignoring(NotFoundException.class)
-                .ignoring(ElementNotInteractableException.class)
                 .ignoring(StaleElementReferenceException.class)
+                .ignoring(ElementNotInteractableException.class)
                 .ignoring(AssertionError.class);
     }
     @AfterTest
     public void afterTest(){
         driver.quit();
     }
-
-
 }
