@@ -50,7 +50,7 @@ public class Task5Tests {
         driver = new ChromeDriver();
         landing = new Landing(driver);
         results = new Results(driver);
-        landing.navigate();
+        landing.navigate("https://duckduckgo.com");
         wait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(4))
                 .pollingEvery(Duration.ofMillis(200))

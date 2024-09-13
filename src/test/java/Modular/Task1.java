@@ -21,7 +21,7 @@ public class Task1 {
     public void beforeTest(){
         driver = new ChromeDriver();
         landing = new Landing(driver);
-        landing.navigate();
+        landing.navigate("https://duckduckgo.com");
     }
     @AfterTest
     public void afterTest(){

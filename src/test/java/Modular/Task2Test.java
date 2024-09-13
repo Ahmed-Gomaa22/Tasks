@@ -21,7 +21,7 @@ public class Task2Test {
     public void beforeTest(){
         driver = new ChromeDriver();
         landingPage = new Landing(driver);
-        landingPage.navigate();
+        landingPage.navigate("https://duckduckgo.com");
 
 
     }

@@ -8,13 +8,14 @@ import org.openqa.selenium.WebElement;
 public class Landing {
     WebDriver driver;
     String title;
+
     By searchInput = By.name("q");
     public Landing(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void navigate(){
-        driver.navigate().to("https://duckduckgo.com");
+    public void navigate(String url){
+        driver.navigate().to(url);
     }
     public String getTitle(){
         title = driver.getTitle();

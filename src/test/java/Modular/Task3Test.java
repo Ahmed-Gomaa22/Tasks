@@ -33,7 +33,7 @@ public class Task3Test {
     public void beforeTest(){
         driver = new ChromeDriver();
         home = new Landing(driver);
-        home.navigate();
+        home.navigate("https://duckduckgo.com");
         results = new Results(driver);
         wait = new FluentWait<>(driver).withTimeout(Duration.ofSeconds(3))
                 .pollingEvery(Duration.ofMillis(300))
